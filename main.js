@@ -15,28 +15,36 @@ var DucksboardNode = function (options) {
 };
 
 /**
- * Pushes a value
+ * Performs a request
  * @private
- * @param {Object} value The value to push
- * @param {String} widgetId The id of the widget
+ * @param {string} method The HTTP method (PUT, DELETE)
+ * @param {Object} value The value to be pushed
+ * @param {string} widgetId The id of the widget
  * @param {function(string)=} callback A callback function that receives null if there is no error
+ * @return {DucksboardNode} A reference to the same DucksboardNode instance
  */
-DucksboardNode.prototype._push = function (value, widgetId, callback) {
+DucksboardNode.prototype._request = function (method, value, widgetId, callback) {
   if (!widgetId) {
     return callback('Must specify widgetId');
   }
 
-  var body = JSON.stringify(value);
+  var body = value ? JSON.stringify(value) : '';
+
+  var headers = {
+    'Content-Length': body.length
+  };
+
+  if (method == 'POST') {
+    headers['Content-Type'] = 'application/x-www-form-urlencoded';
+  }
+
   var options = {
     host: this._host,
     port: this._port,
     path: '/v/' + widgetId,
-    method: 'POST',
+    method: method,
     auth: this._apiKey + ':x',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': body.length
-    }
+    headers: headers
   };
 
   var req = https.request(options, function(res) {
@@ -52,10 +60,23 @@ DucksboardNode.prototype._push = function (value, widgetId, callback) {
 };
 
 /**
+ * Pushes a value
+ * @private
+ * @param {Object} value The value to push
+ * @param {string} widgetId The id of the widget
+ * @param {function(string)=} callback A callback function that receives null if there is no error
+ * @return {DucksboardNode} A reference to the same DucksboardNode instance
+ */
+DucksboardNode.prototype._push = function (value, widgetId, callback) {
+  return this._request('POST', value, widgetId, callback);
+};
+
+/**
  * Pushes a simple value
  * @param {Object} value The value to push
- * @param {String} widgetId The id of the widget
+ * @param {string} widgetId The id of the widget
  * @param {function(string)=} callback A callback function that receives null if there is no error
+ * @return {DucksboardNode} A reference to the same DucksboardNode instance
  */
 DucksboardNode.prototype.pushValue = function(value, widgetId, callback) {
   return this._push({value: value}, widgetId, callback);
@@ -64,8 +85,9 @@ DucksboardNode.prototype.pushValue = function(value, widgetId, callback) {
 /**
  * Pushes a delta value
  * @param {number} delta The delta to push
- * @param {String} widgetId The id of the widget
+ * @param {string} widgetId The id of the widget
  * @param {function(string)=} callback A callback function that receives null if there is no error
+ * @return {DucksboardNode} A reference to the same DucksboardNode instance
  */
 DucksboardNode.prototype.pushDelta = function(delta, widgetId, callback) {
   return this._push({delta: delta}, widgetId, callback);
@@ -75,8 +97,9 @@ DucksboardNode.prototype.pushDelta = function(delta, widgetId, callback) {
  * Pushes a value with a timestamp
  * @param {Object} value The value to push
  * @param {number} timestamp The timestamp to push
- * @param {String} widgetId The id of the widget
+ * @param {string} widgetId The id of the widget
  * @param {function(string)=} callback A callback function that receives null if there is no error
+ * @return {DucksboardNode} A reference to the same DucksboardNode instance
  */
 DucksboardNode.prototype.pushValueWithTimestamp = function(value, timestamp, widgetId, callback) {
   return this._push({value: value, timestamp: timestamp}, widgetId, callback);
@@ -84,35 +107,12 @@ DucksboardNode.prototype.pushValueWithTimestamp = function(value, timestamp, wid
 
 /**
  * Deletes all data for a widget.
- * @param {String} widgetId The Id of the widget
+ * @param {string} widgetId The Id of the widget
  * @param {function(string)=} callback callback A callback function
  * @see http://dev.ducksboard.com/apidoc/push-api/#delete-values-label
+ * @return {DucksboardNode} A reference to the same DucksboardNode instance
  */
 DucksboardNode.prototype.deleteValues = function(widgetId, callback) {
-  if (!widgetId) {
-    return callback('Must specify widgetId');
-  }
-
-  var options = {
-    host: this._host,
-    port: this._port,
-    path: '/v/' + widgetId,
-    method: 'DELETE',
-    auth: this._apiKey + ':x',
-    headers: {
-      'Content-Length': 0
-    }
-  };
-
-  var req = https.request(options, function(res) {
-    if (callback) {
-      callback(res.statusCode !== 200 ? res.statusCode : null);
-    }
-  });
-
-  req.end();
-
-  return this;
-};
+  return this._request('DELETE', value, widgetId, callback);};
 
 module.exports = DucksboardNode;
