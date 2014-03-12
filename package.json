@@ -24,7 +24,8 @@
     "node": ">= 0.6.0"
   },
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "make",
+    "coveralls": "make coverage"
   },
   "config": {
     "blanket": {
