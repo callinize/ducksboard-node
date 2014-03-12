@@ -1,5 +1,7 @@
 Ducksboard-node
 ===============
+<img src="http://img.shields.io/travis/JMPerez/ducksboard-node.svg">&nbsp;
+<img src="http://img.shields.io/coveralls/JMPerez/ducksboard-node.svg">
 
 Ducksboard-node is a [Ducksboard](https://ducksboard.com) API wrapper on node.js
 
