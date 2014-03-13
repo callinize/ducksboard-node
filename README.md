@@ -32,21 +32,21 @@ dn.pushDelta(-4, 'my_widget', function(err) {
 	if (err){
 		console.error('There was an error'); //error pushing to ducksboard server.
 	}
-}
+});
 
 // push a value with a timestamp to 'my_widget'
 dn.pushValueWithTimestamp(101, +new Date(), 'my_widget', function(err) {
 	if (err){
 		console.error('There was an error'); //error pushing to ducksboard server.
 	}
-}
+});
 
 // delete all value of 'my_widget'
 dn.deleteValues('my_widget', function(err) {
 	if (err){
 		console.error('There was an error'); //error pushing to ducksboard server.
 	}
-}
+});
 
 ```
 Run the tests with: `npm test` (requires mocha)
