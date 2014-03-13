@@ -24,8 +24,7 @@
     "node": ">= 0.6.0"
   },
   "scripts": {
-    "test": "make",
-    "coveralls": "make coverage"
+    "test": "make coverage"
   },
   "config": {
     "blanket": {
