@@ -50,3 +50,7 @@ dn.deleteValues('my_widget', function(err) {
 
 ```
 Run the tests with: `npm test` (requires mocha)
+
+## License
+
+Copyright (c) 2014 José M. Pérez Licensed under the MIT license.
