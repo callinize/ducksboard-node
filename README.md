@@ -1,7 +1,7 @@
 Ducksboard-node
 ===============
-<a href="https://travis-ci.org/JMPerez/ducksboard-node/"><img src="http://img.shields.io/travis/JMPerez/ducksboard-node.svg"></a>&nbsp;
-<a href="https://coveralls.io/r/JMPerez/ducksboard-node"><img src="http://img.shields.io/coveralls/JMPerez/ducksboard-node.svg"></a>
+
+[![Build Status](https://travis-ci.org/JMPerez/ducksboard-node.png)](https://travis-ci.org/JMPerez/ducksboard-node/) &nbsp; [![Coverage Status](https://coveralls.io/repos/JMPerez/ducksboard-node/badge.png?branch=master)](https://coveralls.io/r/JMPerez/ducksboard-node?branch=master)
 
 Ducksboard-node is a [Ducksboard](https://ducksboard.com) API wrapper on node.js
 
