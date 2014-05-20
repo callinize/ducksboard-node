@@ -19,7 +19,7 @@
       "url": "https://github.com/jmperez/ducksboard-node/blob/master/LICENSE"
     }
   ],
-  "main": "main",
+  "main": "lib/main.js",
   "engines": {
     "node": ">= 0.6.0"
   },
