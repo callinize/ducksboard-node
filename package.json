@@ -1,7 +1,7 @@
 {
   "name": "ducksboard-node",
   "description": "A Ducksboard API wrapper for node.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/jmperez/ducksboard-node",
   "author": {
     "name": "José M. Pérez"
