@@ -5,7 +5,7 @@ Ducksboard-node
 
 Ducksboard-node is a [Ducksboard](https://ducksboard.com) API wrapper on node.js
 
-This is a simple API wrapper to communicate with [Ducksboard's Push API](dev.ducksboard.com/apidoc/push-api/)
+This is a simple API wrapper to communicate with [Ducksboard's Push API](https://dev.ducksboard.com/apidoc/push-api/)
 
 ## Installation
 Install the module with: `npm install ducksboard-node`
