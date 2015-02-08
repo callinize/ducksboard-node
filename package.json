@@ -1,7 +1,7 @@
 {
   "name": "ducksboard-node",
   "description": "A Ducksboard API wrapper for node.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/jmperez/ducksboard-node",
   "author": {
     "name": "José M. Pérez"
@@ -28,7 +28,7 @@
   },
   "config": {
     "blanket": {
-      "pattern": "//^(?!.*node_modules.*$).*lib\//"
+      "pattern": "//^(?!.*node_modules.*$).*lib//"
     }
   },
   "devDependencies": {
@@ -38,5 +38,7 @@
     "mocha-lcov-reporter": "~0.0",
     "sinon": "~1.9"
   },
-  "keywords": ["ducksboard"]
+  "keywords": [
+    "ducksboard"
+  ]
 }
